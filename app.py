@@ -34,21 +34,35 @@ def showSchedule():
     for exam_tup in exams:
         df.loc[exam_tup[1], exam_tup[0]] = classname
     df.columns = ["Mon 5/8", "Tues 5/9", "Weds 5/10", "Thurs 5/11", "Fri 5/12"]
-    df.style.apply(color)
-    return render_template("schedule.html", name=showSchedule, data=df.to_html())
+    # df.style.applymap(color)
+    return render_template("schedule.html", name=showSchedule, data=df.style.applymap(color).render())
 
     # return render_template('schedule.htmal', exams=exams)
 
 row_data = schedule_table.main()
 
 
+covered = {}
 def color(s):
-    boolcol = s != " "
-    colors = ['#BBE3FF', '#ff6347', '187,227,255', '220,170,225', '188,255,166', '255,231,166', '252,226,226', ]
-    randindex = random.random() * len(colors) // 1
-    randcolor = colors[randindex]
-    colors.remove(randcolor)
-    return ['background-color:' + randcolor if v else '' for v in boolcol]
+    global covered
+    boolsq = s != " "
+    if boolsq == True:
+        if s in covered.keys():
+            # print(s, 'COVERED AGAIN')
+            return 'background-color: '+ covered[s]
+        else:
+            # print(s, 'FINDING COLOR AND GIVING TO COVERED')
+            colors = ['#BBE3FF', '#ff6347', 'rgb(187,227,255)', 'rgb(220,170,225)', 'rgb(188,255,166)', 
+                  'rgb(255,231,166)', 'rgb(139,211,178)', 'rgb(164,195,243)', 'rgb(252,157,145)',
+                 'rgb(255,214,163)', 'rgb(205,206,255)', 'rgb(228,215,246)']
+            randindex = int(random.random() * len(colors) // 1)
+            randcolor = colors[randindex]
+            colors.remove(randcolor)
+            # print(randcolor, '\n')
+            covered[s] = randcolor
+            return 'background-color: ' + randcolor + ';'
+    else:
+        return ''
 
 
 def search(day, time, classname):
