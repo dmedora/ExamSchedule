@@ -1,4 +1,10 @@
 from flask import Flask, render_template, request, json
+import schedule_table
+
+################# NOTES #################
+# add alerts for exam schedule conflicts
+# 
+#########################################
 
 
 app = Flask(__name__)
@@ -7,9 +13,38 @@ app = Flask(__name__)
 def main():
 	return render_template('index.html')
 
-@app.route("/showSignUp")
-def showSignUp():
-	return render_template('signup.html')
+@app.route("/showSchedule", methods=["POST"])
+def showSchedule():
+	# call search function, get values to return
+    exams = []
+    for i in range(0, num_classes)
+        day = request.form["Day" + i]
+        time = request.form["Time" + i]
+        exams.append(search(day, time))
+        
+    return render_template('schedule.html', exams=exams)
+
+row_data = schedule_table.main()
+
+
+
+def search(day, time):
+    day = day.replace(",", " ").replace("&", " ").replace(";", " ").split()
+    day = day[0]
+
+    if day == "Foreign":
+        return (row_data[13][1], row_data[13][3])
+    if day == "Econ":
+        return (row_data[2][1], row_data[2][3])
+    if day == "Chem":
+        return (row_data[8][1], row_data[8][3])
+
+    for row in row_data:
+        if day in row[4] and time in row[4]:
+            return (row[1], row[3])
+
+
+
 
 # @app.route("/signUp", methods=["POST"])
 # def signUp():

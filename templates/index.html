@@ -24,7 +24,7 @@
                     </li>
                     <li role="presentation"><a href="#">Sign In</a>
                     </li>
-                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    <li role="presentation"><a href="showSchedule">Sign Up</a>
                     </li>
                 </ul>
             </nav>
@@ -38,7 +38,7 @@
             </p>
         </div>
  
-        <form action="index.php">
+        <form action="showSchedule" method="POST">
             Select a class time: 
             <select name="Day">
                 <option value="0">--</option>
@@ -51,21 +51,66 @@
             </select>
             <select name="Time">
                 <option value="0">--</option>
-                <option value="8:00am">8:00am</option>
-                <option value="8:30am">8:30am</option>
-                <option value="9:00am">9:00am</option>
-                <option value="9:30am">9:30am</option>
-                <option value="10:00am">10:00am</option>
-                <option value="10:30am">10:30am</option>
-                <option value="11:00am">11:00am</option>
-                <option value="11:30am">11:30am</option>
-                <option value="12:00pm">12:00pm</option>
-                <option value="12:30pm">12:30pm</option>
-                <option value="1:00pm">1:00pm</option><option value="1:30pm">1:30pm</option><option value="2:00pm">2:00pm</option><option value="2:30pm">2:30pm</option><option value="3:00pm">3:00pm</option><option value="3:30pm">3:30pm</option><option value="4:00pm">4:00pm</option><option value="4:30pm">4:30pm</option>
-                <option value="5:00pm">5:00pm and after</option>
-    
+                <option value="8">8:00am</option>
+                <option value="8:30">8:30am</option>
+                <option value="9">9:00am</option>
+                <option value="9:30">9:30am</option>
+                <option value="10">10:00am</option>
+                <option value="10:30">10:30am</option>
+                <option value="11">11:00am</option>
+                <option value="11:30">11:30am</option>
+                <option value="Noon">12:00pm</option>
+                <option value="12:30">12:30pm</option>
+                <option value="1">1:00pm</option>
+                <option value="1:30">1:30pm</option>
+                <option value="2">2:00pm</option>
+                <option value="2:30">2:30pm</option>
+                <option value="3">3:00pm</option>
+                <option value="3:30">3:30pm</option>
+                <option value="4">4:00pm</option>
+                <option value="4:30">4:30pm</option>
+                <option value="5">5:00pm and after</option>
             </select>
-            <input type="submit" name="my-form" value="Submit!" />
+
+
+
+            <select name="Day2">
+                <option value="0">--</option>
+                <option value="MWF">MWF</option>
+                <option value="MTWTF">MTWTF</option>
+                <option value="TuTh">TuTh</option>
+                <option value="Foreign Languages">Foreign Languages</option>
+                <option value="Econ 1, 100B">Econ 1, 100B</option>
+                <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
+            </select>
+            <select name="Time2">
+                <option value="0">--</option>
+                <option value="8">8:00am</option>
+                <option value="8:30">8:30am</option>
+                <option value="9">9:00am</option>
+                <option value="9:30">9:30am</option>
+                <option value="10">10:00am</option>
+                <option value="10:30">10:30am</option>
+                <option value="11">11:00am</option>
+                <option value="11:30">11:30am</option>
+                <option value="Noon">12:00pm</option>
+                <option value="12:30">12:30pm</option>
+                <option value="1">1:00pm</option>
+                <option value="1:30">1:30pm</option>
+                <option value="2">2:00pm</option>
+                <option value="2:30">2:30pm</option>
+                <option value="3">3:00pm</option>
+                <option value="3:30">3:30pm</option>
+                <option value="4">4:00pm</option>
+                <option value="4:30">4:30pm</option>
+                <option value="5">5:00pm and after</option>
+            </select>
+
+
+
+
+
+            <input type="submit" href="/showSchedule" name="my-form" value="Submit!" />
         </form> 
 
 

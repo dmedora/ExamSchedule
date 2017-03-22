@@ -22,26 +22,33 @@ soup = BeautifulSoup(html, "lxml")
 
 table = soup.find("table")
 # table_body = table.find("tbody")
-print("TABLE START")
 
 # for row in table.find_all("tr")[1:]:
 #     for col in row.find_all("td"):
 #         print(col.get_text())
 
 row_data = []
-for row in table.find_all("tr")[1:]:
+for row in table.find_all("tr")[2:-1]:
     temp = []
     cols = row.find_all("td")
     cols = [ele.text.strip() for ele in cols]
     # row_data.append([ele for ele in cols if ele])
     row_data.append(cols)
-print(row_data)
+    print(row_data)
 
 
+
+for i in range(0, len(row_data)):
+    # if i == 2 or i == 8 or i == 13:
+    #     continue
+    temp = row_data[i][4] # string
+    # temp = row_data[i][4].split(",")
+    temp = temp.replace(",", " ").replace("&", " ").replace(";", " ").replace("pm", " ").replace("am", " ").split() # list
+    row_data[i][4] = temp
 
 
 def main():
-    pass
+    return row_data
 
 
 
