@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ################### START NOTES ###################
-# Nope
+# Current alternative to manually going through the list - check the syllabus for each class. But doesn't give you a nice visual representation easily. 
 ################### END NOTES ###################
 
 from bs4 import BeautifulSoup
