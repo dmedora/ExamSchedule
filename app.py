@@ -21,7 +21,7 @@ def showSchedule():
         day = request.form["Day" + i]
         time = request.form["Time" + i]
         exams.append(search(day, time))
-        
+
     return render_template('schedule.html', exams=exams)
 
 row_data = schedule_table.main()
@@ -60,5 +60,5 @@ def search(day, time):
 # 		return json.dumps({"html":"<span>Fields not completed.</span>"})
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
 
