@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, json
 import schedule_table
+import pandas as pd
 
 ################# NOTES #################
 # add alerts for exam schedule conflicts
@@ -16,32 +17,43 @@ def main():
 @app.route("/showSchedule", methods=["POST"])
 def showSchedule():
 	# call search function, get values to return
+    # exams = []
+    # for i in range(0, num_classes)
+        # day = request.form["Day" + i]
+        # time = request.form["Time" + i]
+        # classname = request.form["ClassName" + i]
+    #     exams.append(search(day, time, classname))
+    day = request.form["Day"]
+    time = request.form["Time"]
+    classname = request.form["ClassName"]
     exams = []
-    for i in range(0, num_classes)
-        day = request.form["Day" + i]
-        time = request.form["Time" + i]
-        exams.append(search(day, time))
+    exams.append(search(day, time, classname))
         
-    return render_template('schedule.html', exams=exams)
+    df = pd.DataFrame(index = ["8-11am", "11:30-2:30pm", "3-6pm", "7-10pm"], columns = ["Mon", "Tues", "Weds", "Thurs", "Fri"]).fillna(" ")
+    for exam_tup in exams:
+        df.loc[exam_tup[1], exam_tup[0]] = classname
+    return render_template("schedule.html", name=showSchedule, data=df.to_html())
+
+    # return render_template('schedule.htmal', exams=exams)
 
 row_data = schedule_table.main()
 
 
 
-def search(day, time):
+def search(day, time, classname):
     day = day.replace(",", " ").replace("&", " ").replace(";", " ").split()
     day = day[0]
 
     if day == "Foreign":
-        return (row_data[13][1], row_data[13][3])
+        return (row_data[13][1], row_data[13][3], classname)
     if day == "Econ":
-        return (row_data[2][1], row_data[2][3])
+        return (row_data[2][1], row_data[2][3], classname)
     if day == "Chem":
-        return (row_data[8][1], row_data[8][3])
+        return (row_data[8][1], row_data[8][3], classname)
 
     for row in row_data:
         if day in row[4] and time in row[4]:
-            return (row[1], row[3])
+            return (row[1], row[3], classname)
 
 
 
@@ -60,5 +72,5 @@ def search(day, time):
 # 		return json.dumps({"html":"<span>Fields not completed.</span>"})
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
 

@@ -34,7 +34,7 @@ for row in table.find_all("tr")[2:-1]:
     cols = [ele.text.strip() for ele in cols]
     # row_data.append([ele for ele in cols if ele])
     row_data.append(cols)
-    print(row_data)
+    # print(row_data)
 
 
 
