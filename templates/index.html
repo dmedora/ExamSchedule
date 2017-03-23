@@ -77,7 +77,7 @@
 
             element.setAttribute("type", "text");
             element.setAttribute("value", "");
-            element.setAttribute("name", "ClassName");
+            element.setAttribute("name", "ClassName"+counter);
             element.setAttribute("placeholder", "Class name");
 
             // element2.setAttribute("name", "Day");
@@ -132,8 +132,8 @@
  
         <form action="showSchedule" method="POST">
             Put class name, select day, and select time:
-            <input type="text" name="ClassName" value="Class Name">
-            <select name="Day">
+            <input type="text" name="ClassName0" value="Class Name">
+            <select name="Day0">
                 <option value="--">--</option>
                 <option value="MWF">MWF</option>
                 <option value="MTWTF">MTWTF</option>
@@ -142,7 +142,7 @@
                 <option value="Econ 1, 100B">Econ 1, 100B</option>
                 <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
             </select>
-            <select name="Time">
+            <select name="Time0">
                 <option value="--">--</option>
                 <option value="8">8:00am</option>
                 <option value="8:30">8:30am</option>
