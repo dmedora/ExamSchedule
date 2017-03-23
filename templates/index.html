@@ -12,8 +12,6 @@
 </head>
  
 <body>
-
-
  
     <div class="container">
         <div class="header">
@@ -42,12 +40,16 @@
         </div>
 
         <br>
+
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
  
         <form action="showSchedule" method="POST">
             Put class name, select day, and select time:
             <input type="text" name="ClassName" value="Class Name">
             <select name="Day">
-                <option value="0">--</option>
+                <option value="--">--</option>
                 <option value="MWF">MWF</option>
                 <option value="MTWTF">MTWTF</option>
                 <option value="TuTh">TuTh</option>
@@ -56,7 +58,7 @@
                 <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
             </select>
             <select name="Time">
-                <option value="0">--</option>
+                <option value="--">--</option>
                 <option value="8">8:00am</option>
                 <option value="8:30">8:30am</option>
                 <option value="9">9:00am</option>
