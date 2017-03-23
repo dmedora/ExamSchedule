@@ -8,6 +8,8 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <link href="../static/css/index.css" rel="stylesheet">
  
 </head>
  
@@ -79,6 +81,7 @@
             element.setAttribute("value", "");
             element.setAttribute("name", "ClassName"+counter);
             element.setAttribute("placeholder", "Class name");
+            element.setAttribute("class", "formbox");
 
             // element2.setAttribute("name", "Day");
             // element2.setAttribute("option value", "11");
@@ -95,11 +98,13 @@
             var selectList_days = document.createElement("select");
             // selectList_days.id = "mySelect_days";
             selectList_days.setAttribute("name", "Day"+counter);
+            selectList_days.setAttribute("class", "formbox");
             insert_loc.appendChild(selectList_days);
 
             var selectList_times = document.createElement("select");
             // selectList_times.id = "mySelect_times";
-            selectList_days.setAttribute("name", "Time"+counter);
+            selectList_times.setAttribute("name", "Time"+counter);
+            selectList_times.setAttribute("class", "formbox");
             insert_loc.appendChild(selectList_times);
 
             //Create and append the options
@@ -129,12 +134,12 @@
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
  
-        <div id="foradding">
         <form action="showSchedule" method="POST">
+        <div id="foradding">
             Put class name, select day, and select time:
             <br>
-            <input type="text" name="ClassName0" value="Class Name">
-            <select name="Day0">
+            <input class="formbox" type="text" name="ClassName0" value="Class Name">
+            <select class="formbox" name="Day0">
                 <option value="--">--</option>
                 <option value="MWF">MWF</option>
                 <option value="MTWTF">MTWTF</option>
@@ -143,7 +148,7 @@
                 <option value="Econ 1, 100B">Econ 1, 100B</option>
                 <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
             </select>
-            <select name="Time0">
+            <select class="formbox" name="Time0">
                 <option value="--">--</option>
                 <option value="8">8:00am</option>
                 <option value="8:30">8:30am</option>
@@ -166,7 +171,7 @@
                 <option value="5">5:00pm and after</option>
             </select>
             </div>
-            <input type="button" value="add stuff" onclick="addTextBox()">
+            <input type="button" value="add stuff" class="addbox" onclick="addTextBox()">
 
             <br>
             <input type="submit" href="/showSchedule" name="my-form" value="Submit!" class="btn btn-lg btn-success"/>
