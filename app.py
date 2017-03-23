@@ -24,6 +24,7 @@ def showSchedule():
         # time = request.form["Time" + i]
         # classname = request.form["ClassName" + i]
     #     exams.append(search(day, time, classname))
+
     day = request.form["Day"]
     time = request.form["Time"]
     classname = request.form["ClassName"]

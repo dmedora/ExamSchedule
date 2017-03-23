@@ -14,7 +14,6 @@
 <body>
 
 
- 
     <div class="container">
         <div class="header">
             <nav>
@@ -27,27 +26,112 @@
                     </li>
                 </ul>
             </nav>
-            <h3 class="text-muted">Python Flask App</h3>
+            <h3 class="text-muted">Exam Scheduler</h3>
         </div>
  
         <div class="jumbotron">
-            <h1>Bucket List App</h1>
+            <h1>OH SHIT EXAMS</h1>
             <p class="lead"></p>
-            <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a>
+            <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Who down for taco tuesday</a>
             </p>
         </div>
 
         <div>
-            If a class is offered on M, W, F, MW, MF, or WF it will fall into the same start times as MWF. If a class is offered on Tu or Th, it will fall into the same start times as TuTh.
+            Note: If a class is offered on M, W, F, MW, MF, or WF it will fall into the same start times as MWF. If a class is offered on Tu or Th, it will fall into the same start times as TuTh.
         </div>
 
+<!--         <script type="text/javascript">
+            function addTextBox() {
+            var element = document.createElement("input");
+            var divy = document.getElementById("foradding");
+
+            element.setAttribute("type", "text");
+            element.setAttribute("value", "");
+            element.setAttribute("name", "Test Name");
+            // document.body.appendChild(element);
+            divy.appendChild(element);
+            }
+        </script> -->
+
+        <script type="text/javascript">
+
+            var counter = 0;
+
+            function addTextBox() {
+            counter += 1;
+
+            var insert_loc = document.getElementById("foradding");
+
+            var element = document.createElement("input");
+            // var element2 = document.createElement("select");
+
+            // theOption=document.createElement("OPTION");
+            // theText=document.createTextNode("Revenue");
+            // theOption.setAttribute("value","Revenue");
+            // theOption.appendChild(theText);
+            // element2.appendChild(theOption);
+
+            
+            // // ADD A COUNTER FOR NAMING THE BOXES!!!!! 
+            // OR have them pre-added, and unhide as required.
+
+            element.setAttribute("type", "text");
+            element.setAttribute("value", "");
+            element.setAttribute("name", "ClassName");
+            element.setAttribute("placeholder", "Class name");
+
+            // element2.setAttribute("name", "Day");
+            // element2.setAttribute("option value", "11");
+            // element3.setAttribute("value", "rrr");
+
+            insert_loc.appendChild(element);
+            // insert_loc.appendChild(element2);
+
+            var day_text_vals = ["--","MWF","MTWTF","TuTh", "Foreign Languages", "Econ 1, 100B", "Chem 1A, 1B, 3A, 3B, 4A & 4B"];
+            var time_vals = ["--", "8", "8:30", "9", "9:30", "10", "10:30", "11", "11:30", "Noon", "12:30", "1", "1:30", "2", "2:30", "3", "3:30", "4", "4:30", "5"];
+            var time_text = ["--", "8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm", "4:00pm", "4:30pm", "5:00pm and after"];
+
+            //Create and append select list
+            var selectList_days = document.createElement("select");
+            // selectList_days.id = "mySelect_days";
+            selectList_days.setAttribute("name", "Day"+counter);
+            insert_loc.appendChild(selectList_days);
+
+            var selectList_times = document.createElement("select");
+            // selectList_times.id = "mySelect_times";
+            selectList_days.setAttribute("name", "Time"+counter);
+            insert_loc.appendChild(selectList_times);
+
+            //Create and append the options
+            for (var i = 0; i < day_text_vals.length; i++) {
+                var option = document.createElement("option");
+                option.value = day_text_vals[i];
+                option.text = day_text_vals[i];
+                selectList_days.appendChild(option);
+                }
+
+            for (var i = 0; i < time_vals.length; i++) {
+                var option = document.createElement("option");
+                option.value = time_vals[i];
+                option.text = time_text[i];
+                // option.text = counter;
+                selectList_times.appendChild(option);
+                }
+
+
+
+            } 
+        </script>
+
+
         <br>
- 
+        <div id="foradding">
         <form action="showSchedule" method="POST">
-            Put class name, select day, and select time:
-            <input type="text" name="ClassName" value="Class Name">
-            <select name="Day">
-                <option value="0">--</option>
+            Please enter your class name, day, and time:
+            <br>
+            <input type="text" name="ClassName0" value="" placeholder="Class name">
+            <select name="Day0">
+                <option value="--">--</option>
                 <option value="MWF">MWF</option>
                 <option value="MTWTF">MTWTF</option>
                 <option value="TuTh">TuTh</option>
@@ -55,8 +139,8 @@
                 <option value="Econ 1, 100B">Econ 1, 100B</option>
                 <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
             </select>
-            <select name="Time">
-                <option value="0">--</option>
+            <select name="Time0">
+                <option value="--">--</option>
                 <option value="8">8:00am</option>
                 <option value="8:30">8:30am</option>
                 <option value="9">9:00am</option>
@@ -77,12 +161,17 @@
                 <option value="4:30">4:30pm</option>
                 <option value="5">5:00pm and after</option>
             </select>
+            </div>
+            <input type="button" value="add stuff" onclick="addTextBox()">
 
-            <input type="submit" href="/showSchedule" name="my-form" value="Submit!" />
+            <br>
+            <input type="submit" href="/showSchedule" name="my-form" value="Submit!" class="btn btn-lg btn-success"/>
         </form> 
 
         <br>
+        <br>
 
+        For the official exam timetable, please refer to:
         <a href="http://registrar.berkeley.edu/sis-SC-message">
             SIS Exam Schedule List
         </a>
@@ -90,30 +179,22 @@
 
         <div class="row marketing">
             <div class="col-lg-6">
-                <h4>Bucket List</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Oh damn</h4>
+                <p>#weontherise #onlywayisup</p>
  
-                <h4>Bucket List</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
  
-                <h4>Bucket List</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
             </div>
  
             <div class="col-lg-6">
-                <h4>Bucket List</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Cal is lit</h4>
+                <p>Also check out SCETSA.</p>
  
-                <h4>Bucket List</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
- 
-                <h4>Bucket List</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+
             </div>
         </div>
  
         <footer class="footer">
-            <p>&copy; Company 2015</p>
+            <p>&copy; Ali Ahmed, Daryus Medora; 2017</p>
         </footer>
  
     </div>
