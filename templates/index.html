@@ -119,7 +119,6 @@
                 }
 
 
-
             } 
         </script>
 
@@ -130,8 +129,10 @@
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
  
+        <div id="foradding">
         <form action="showSchedule" method="POST">
             Put class name, select day, and select time:
+            <br>
             <input type="text" name="ClassName0" value="Class Name">
             <select name="Day0">
                 <option value="--">--</option>

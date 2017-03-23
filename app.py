@@ -21,7 +21,7 @@ def handle_invalid_usage(response):
 
 @app.route("/showSchedule", methods=["POST"])
 def showSchedule():
-	# call search function, get values to return
+    # call search function, get values to return
     # exams = []
     # for i in range(0, num_classes)
         # day = request.form["Day" + i]
@@ -29,18 +29,41 @@ def showSchedule():
         # classname = request.form["ClassName" + i]
     #     exams.append(search(day, time, classname))
 
-    day = request.form["Day"]
-    time = request.form["Time"]
-    classname = request.form["ClassName"]
+    day = request.form["Day0"]
+    time = request.form["Time0"]
+    classname = request.form["ClassName0"]
     exams = []
-    for i in range(0, num_classes)
-        day = request.form["Day" + i]
-        time = request.form["Time" + i]
-        exams.append(search(day, time))
+    
 
-    return render_template('schedule.html', exams=exams)
+    # for i in range(0, num_classes)
+    #     day = request.form["Day" + i]
+    #     time = request.form["Time" + i]
+    #     exams.append(search(day, time))
 
-    # return render_template('schedule.htmal', exams=exams)
+    # return render_template('schedule.html', exams=exams)
+
+
+    ############# LEAVE DIS ALONE #############
+    try:
+        toappend = search(day, time, classname)
+    except Exception as e:
+        return render_template('index.html', error = "Classes filled out incorrectly")
+
+    exams.append(toappend)
+    # clean Nones from exams, may come from search():
+    exams = [val for val in exams if val != None]
+
+        
+    df = pd.DataFrame(index = ["8-11am", "11:30-2:30pm", "3-6pm", "7-10pm"], columns = ["Mon", "Tues", "Weds", "Thurs", "Fri"]).fillna(" ")
+    for exam_tup in exams:
+        df.loc[exam_tup[1], exam_tup[0]] = classname
+    df.columns = ["Mon 5/8", "Tues 5/9", "Weds 5/10", "Thurs 5/11", "Fri 5/12"]
+    # df.style.applymap(color)
+    return render_template("schedule.html", name=showSchedule, data=df.style.applymap(color).render())
+
+    ############################################
+
+    
 
 row_data = schedule_table.main()
 
@@ -79,7 +102,10 @@ def search(day, time, classname):
     if day == "Chem":
         return (row_data[8][1], row_data[8][3], classname)
 
-    if time == "--":
+    if time == "--" and day == "--":
+        return None
+
+    if time == "--" or day == "--":
         raise Exception("OH SHIT YOU DONE FUCKED UP")
     
     for row in row_data:
