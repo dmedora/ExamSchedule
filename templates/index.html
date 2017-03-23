@@ -125,12 +125,15 @@
 
 
         <br>
-        <div id="foradding">
+
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+ 
         <form action="showSchedule" method="POST">
-            Please enter your class name, day, and time:
-            <br>
-            <input type="text" name="ClassName0" value="" placeholder="Class name">
-            <select name="Day0">
+            Put class name, select day, and select time:
+            <input type="text" name="ClassName" value="Class Name">
+            <select name="Day">
                 <option value="--">--</option>
                 <option value="MWF">MWF</option>
                 <option value="MTWTF">MTWTF</option>
@@ -139,7 +142,7 @@
                 <option value="Econ 1, 100B">Econ 1, 100B</option>
                 <option value="Chem 1A, 1B, 3A, 3B, 4A & 4B">Chem 1A, 1B, 3A, 3B, 4A & 4B</option>
             </select>
-            <select name="Time0">
+            <select name="Time">
                 <option value="--">--</option>
                 <option value="8">8:00am</option>
                 <option value="8:30">8:30am</option>
