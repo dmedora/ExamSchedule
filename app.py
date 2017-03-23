@@ -15,6 +15,10 @@ app = Flask(__name__)
 def main():
 	return render_template('index.html')
 
+@app.errorhandler(Exception)
+def handle_invalid_usage(response):
+    return response
+
 @app.route("/showSchedule", methods=["POST"])
 def showSchedule():
 	# call search function, get values to return
@@ -28,7 +32,13 @@ def showSchedule():
     time = request.form["Time"]
     classname = request.form["ClassName"]
     exams = []
-    exams.append(search(day, time, classname))
+    
+    try:
+        toappend = search(day, time, classname)
+    except Exception as e:
+        return render_template('index.html', error = "Classes filled out incorrectly")
+
+    exams.append(toappend)
         
     df = pd.DataFrame(index = ["8-11am", "11:30-2:30pm", "3-6pm", "7-10pm"], columns = ["Mon", "Tues", "Weds", "Thurs", "Fri"]).fillna(" ")
     for exam_tup in exams:
@@ -76,11 +86,13 @@ def search(day, time, classname):
     if day == "Chem":
         return (row_data[8][1], row_data[8][3], classname)
 
+    if time == "--":
+        raise Exception("OH SHIT YOU DONE FUCKED UP")
+    
     for row in row_data:
         if day in row[4] and time in row[4]:
             return (row[1], row[3], classname)
-
-
+    # easygui.msgbox("Classes filled out incorrectly", title="ERROR")
 
 
 # @app.route("/signUp", methods=["POST"])
