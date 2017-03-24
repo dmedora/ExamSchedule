@@ -9,7 +9,7 @@
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-    <link href="../static/css/index.css" rel="stylesheet">
+    <link href="../static/css/index.css?q=1270538755" rel="stylesheet">
  
 </head>
  
@@ -82,6 +82,7 @@
             element.setAttribute("name", "ClassName"+counter);
             element.setAttribute("placeholder", "Class name");
             element.setAttribute("class", "formbox");
+            element.setAttribute("id", "inputbox");
 
             // element2.setAttribute("name", "Day");
             // element2.setAttribute("option value", "11");
@@ -137,8 +138,8 @@
         <form action="showSchedule" method="POST">
         <div id="foradding">
             Put class name, select day, and select time:
-            <br>
-            <input class="formbox" type="text" name="ClassName0" value="Class Name">
+            <div>
+            <input class="formbox" type="text" name="ClassName0" placeholder="Class name">
             <select class="formbox" name="Day0">
                 <option value="--">--</option>
                 <option value="MWF">MWF</option>
@@ -170,6 +171,7 @@
                 <option value="4:30">4:30pm</option>
                 <option value="5">5:00pm and after</option>
             </select>
+            </div>
             </div>
             <input type="button" value="add stuff" class="addbox" onclick="addTextBox()">
 
