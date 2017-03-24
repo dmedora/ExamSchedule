@@ -8,3 +8,8 @@
 .addbox{
 	margin-left: 5px;
 }
+
+#inputbox::before {
+    content: "";
+    display: block;
+}
