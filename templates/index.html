@@ -62,7 +62,9 @@
             function addTextBox() {
             counter += 1;
 
-            var insert_loc = document.getElementById("foradding");
+            // var insert_loc = document.getElementById("foradding");
+
+            var node = document.createElement("LI");
 
             var element = document.createElement("input");
             // var element2 = document.createElement("select");
@@ -88,7 +90,10 @@
             // element2.setAttribute("option value", "11");
             // element3.setAttribute("value", "rrr");
 
-            insert_loc.appendChild(element);
+            // insert_loc.appendChild(element);
+            node.appendChild(element);
+
+
             // insert_loc.appendChild(element2);
 
             var day_text_vals = ["--","MWF","MTWTF","TuTh", "Foreign Languages", "Econ 1, 100B", "Chem 1A, 1B, 3A, 3B, 4A & 4B"];
@@ -100,13 +105,19 @@
             // selectList_days.id = "mySelect_days";
             selectList_days.setAttribute("name", "Day"+counter);
             selectList_days.setAttribute("class", "formbox");
-            insert_loc.appendChild(selectList_days);
+            
+            // insert_loc.appendChild(selectList_days);
+            node.appendChild(selectList_days);
+
 
             var selectList_times = document.createElement("select");
             // selectList_times.id = "mySelect_times";
             selectList_times.setAttribute("name", "Time"+counter);
             selectList_times.setAttribute("class", "formbox");
-            insert_loc.appendChild(selectList_times);
+            
+            // insert_loc.appendChild(selectList_times);
+            node.appendChild(selectList_times);
+
 
             //Create and append the options
             for (var i = 0; i < day_text_vals.length; i++) {
@@ -124,6 +135,7 @@
                 selectList_times.appendChild(option);
                 }
 
+            document.getElementById("myList").appendChild(node);
 
             } 
         </script>
@@ -136,9 +148,12 @@
         {% endif %}
  
         <form action="showSchedule" method="POST">
-        <div id="foradding">
+        <!-- <div id="foradding"> -->
             Put class name, select day, and select time:
-            <div>
+            <ul id="myList">
+                <li>
+
+<!--             <div> -->
             <input class="formbox" type="text" name="ClassName0" placeholder="Class name">
             <select class="formbox" name="Day0">
                 <option value="--">--</option>
@@ -171,8 +186,14 @@
                 <option value="4:30">4:30pm</option>
                 <option value="5">5:00pm and after</option>
             </select>
-            </div>
-            </div>
+            <!-- </div> -->
+
+                </li>
+
+
+            </ul>
+
+            <!-- </div> -->
             <input type="button" value="add stuff" class="addbox" onclick="addTextBox()">
 
             <br>
