@@ -3,13 +3,14 @@
 
 <head>
     <title>Exam Schedule Builder</title>
- 
+
+    <link rel="shortcut icon" href="static/img/ucb_logo.ico" type="image/vnd.microsoft.icon">
  
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-    <link href="../static/css/index.css?q=1270538755" rel="stylesheet">
+    <link href="../static/css/index.css?q=1270538545" rel="stylesheet">
  
 </head>
  
@@ -18,7 +19,7 @@
 
     <div class="container">
         <div class="header">
-            <nav>
+            <!-- <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active"><a href="#">Home</a>
                     </li>
@@ -27,7 +28,7 @@
                     <li role="presentation"><a href="showSchedule">Sign Up</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
             <h3 class="text-muted">Exam Scheduler</h3>
         </div>
  
@@ -36,10 +37,6 @@
             <p class="lead"></p>
             <p><a class="btn btn-lg btn-success" href="http://www.remysberkeley.com/" role="button">Who down for taco tuesday</a>
             </p>
-        </div>
-
-        <div>
-            Note: If a class is offered on M, W, F, MW, MF, or WF it will fall into the same start times as MWF. If a class is offered on Tu or Th, it will fall into the same start times as TuTh.
         </div>
 
 <!--         <script type="text/javascript">
@@ -84,7 +81,6 @@
             element.setAttribute("name", "ClassName"+counter);
             element.setAttribute("placeholder", "Class name");
             element.setAttribute("class", "formbox");
-            element.setAttribute("id", "inputbox");
 
             // element2.setAttribute("name", "Day");
             // element2.setAttribute("option value", "11");
@@ -194,13 +190,20 @@
             </ul>
 
             <!-- </div> -->
-            <input type="button" value="add stuff" class="addbox" onclick="addTextBox()">
+            <input type="button" value="Add Class" class="addbox" onclick="addTextBox()">
 
             <br>
-            <input type="submit" href="/showSchedule" name="my-form" value="Submit!" class="btn btn-lg btn-success"/>
+            <br>
+
+            <input type="submit" href="/showSchedule" name="my-form" value="Show Finals Schedule!" class="btn btn-lg btn-success"/>
         </form> 
 
         <br>
+
+        <div>
+            <strong>Note:</strong> If a class is offered on M, W, F, MW, MF, or WF it will fall into the same start times as MWF. <br> If a class is offered on Tu or Th, it will fall into the same start times as TuTh.
+        </div>
+
         <br>
 
         For the official exam timetable, please refer to:
@@ -208,8 +211,11 @@
             SIS Exam Schedule List
         </a>
 
+        <br>
+        <br>
 
-        <div class="row marketing">
+
+<!--         <div class="row marketing">
             <div class="col-lg-6">
                 <h4>Oh damn</h4>
                 <p>#weontherise #onlywayisup</p>
@@ -223,7 +229,7 @@
  
 
             </div>
-        </div>
+        </div> -->
  
         <footer class="footer">
             <p>&copy; Ali Ahmed, Daryus Medora; 2017</p>
