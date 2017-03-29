@@ -8,7 +8,6 @@ import random
 # 
 #########################################
 
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -24,9 +23,8 @@ def showSchedule():
     exams = []
     num_vals = len(request.form)
     form_vals = []
-    i = 0
-    test_var = 5
 
+    i = 0
     while (3*i) < (num_vals - 1): # -1 to exclude the submit button
         temp_name = request.form["ClassName" + str(i)] # works fine
         temp_day = request.form["Day" + str(i)] # don't work fine
@@ -45,14 +43,26 @@ def showSchedule():
             return render_template('index.html', error="Classes filled out incorrectly")
 
         exams.append(toappend)
+        exams = [val for val in exams if val != None]
 
-    #for tiplet in exams:
-        #if current exam time also shared by another, replace them with one tuple, with the class names ([3]) added together with a '/'. 
-        #feature to allow them to manually enter times? if they have exam conflicts/alternate times? 
+    # to handle exams at the same time
+    seen = [None for i in range(0, len(exams))]
+    for i in range(0, len(exams)):
+        flag = False
+        for j in range(0, len(seen)):
+            if (seen[j] != None) and (exams[i][0] == seen[j][0] and exams[i][1] == seen[j][1]):
+                if "Time conflict" in seen[j][2]:
+                    seen[j][2] = seen[j][2] + " / " + exams[i][2]
+                else: 
+                    seen[j][2] = "Time conflict: " + seen[j][2] + " / " + exams[i][2]
+                flag = True
+                break
+                
+        if flag == False:
+            seen[i] = list(exams[i]) #because outside loop... 
 
 
-    # clean Nones from exams, may come from search():
-    exams = [val for val in exams if val != None]
+    exams = [val for val in seen if val != None]
 
     df = pd.DataFrame(index = ["8-11am", "11:30-2:30pm", "3-6pm", "7-10pm"], columns = ["Mon", "Tues", "Weds", "Thurs", "Fri"]).fillna(" ")
     for exam_tup in exams:
@@ -111,7 +121,7 @@ def search(day, time, classname):
     
     for row in row_data:
         if day in row[4] and time in row[4]:
-            return (row[1], row[3], classname)
+            return [row[1], row[3], classname]
     # easygui.msgbox("Classes filled out incorrectly", title="ERROR")
 
 
@@ -150,4 +160,11 @@ if __name__ == "__main__":
     # except Exception as e:
     #     return render_template('index.html', error = "Classes filled out incorrectly")
     # exams.append(toappend)
+
+
+    # except Exception as e:
+    #     # list index out of range... 
+    #     return render_template('test_page.html', test_var=e, test2=exams, test3=seen)
+    # # return render_template('test_page.html', test2=exams, test3=seen)
+
 
