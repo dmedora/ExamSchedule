@@ -76,7 +76,7 @@
             // OR have them pre-added, and unhide as required.
 
             element.setAttribute("type", "text");
-            element.setAttribute("value", "");
+            element.setAttribute("value", "Class Name");
             element.setAttribute("name", "ClassName"+counter);
             element.setAttribute("placeholder", "Class name");
 
@@ -99,7 +99,7 @@
 
             var selectList_times = document.createElement("select");
             // selectList_times.id = "mySelect_times";
-            selectList_days.setAttribute("name", "Time"+counter);
+            selectList_times.setAttribute("name", "Time"+counter);
             insert_loc.appendChild(selectList_times);
 
             //Create and append the options
@@ -129,8 +129,8 @@
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
  
+        <form action="/showSchedule" method="POST">
         <div id="foradding">
-        <form action="showSchedule" method="POST">
             Put class name, select day, and select time:
             <br>
             <input type="text" name="ClassName0" value="Class Name">
