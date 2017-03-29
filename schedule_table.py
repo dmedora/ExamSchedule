@@ -5,20 +5,28 @@
 # Current alternative to manually going through the list - check the syllabus for each class. But doesn't give you a nice visual representation easily. 
 ################### END NOTES ###################
 
-from bs4 import BeautifulSoup
-from selenium import webdriver
+from bs4 import BeautifulSoup, SoupStrainer
+# from selenium import webdriver
+import requests, re
 
+##########
+## http://stackoverflow.com/questions/25539330/speeding-up-beautifulsoup
+session = requests.Session()
+response = session.get("http://registrar.berkeley.edu/sis-SC-message")
+strainer = SoupStrainer("table")
+soup = BeautifulSoup(response.content, "lxml", parse_only=strainer)
+##########
 
-# driver = webdriver.Firefox()
-driver = webdriver.PhantomJS()
-# driver.save_screenshot("screen.png")
+# # driver = webdriver.Firefox()
+# driver = webdriver.PhantomJS()
+# # driver.save_screenshot("screen.png")
 
-driver.get("http://registrar.berkeley.edu/sis-SC-message")
+# driver.get("http://registrar.berkeley.edu/sis-SC-message")
 
-html = driver.page_source
+# html = driver.page_source
 
-soup = BeautifulSoup(html, "lxml")
-
+# soup = BeautifulSoup(html, "lxml")
+##########
 
 table = soup.find("table")
 # table_body = table.find("tbody")
@@ -46,7 +54,7 @@ for i in range(0, len(row_data)):
     temp = temp.replace(",", " ").replace("&", " ").replace(";", " ").replace("pm", " ").replace("am", " ").split() # list
     row_data[i][4] = temp
 
-
+# print(row_data)
 def main():
     return row_data
 
