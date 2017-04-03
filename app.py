@@ -18,6 +18,10 @@ def main():
 def handle_invalid_usage(response):
     return response
 
+@app.errorhandler(404)
+def not_found(e):
+    return Response('Page not found!')
+
 @app.route("/showSchedule", methods=["POST"])
 def showSchedule():
     exams = []
