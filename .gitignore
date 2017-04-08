@@ -1,0 +1,9 @@
+
+# Log files #
+#############
+*.log
+
+
+# Caches #
+##########
+__pycache__
