@@ -32,7 +32,7 @@
         </div>
  
         <div class="jumbotron">
-            <h1>OH SHIT EXAMS</h1>
+            <h2>OH SHIT EXAMS</h2>
             <p class="lead"></p>
             <p><a class="btn btn-lg btn-success" href="http://www.remysberkeley.com/" role="button">Who down for taco tuesday</a>
             </p>
@@ -209,6 +209,16 @@
         <a href="http://registrar.berkeley.edu/sis-SC-message">
             SIS Exam Schedule List
         </a>
+
+        <br>
+        <br>
+
+        <div class="df">
+            {% block content %}
+            <h1>Final Exam Schedule</h1>
+            {{data | safe}}
+            {% endblock %}
+        </div>
 
 
         <div class="row marketing">

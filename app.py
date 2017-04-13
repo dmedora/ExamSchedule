@@ -14,6 +14,10 @@ app = Flask(__name__)
 def main():
     return render_template('index.html')
 
+@app.route("/showSchedule", methods=["GET"])
+def refreshGet():
+    return render_template('index.html')
+
 @app.errorhandler(Exception)
 def handle_invalid_usage(response):
     return response
@@ -75,7 +79,8 @@ def showSchedule():
     df.columns = ["Mon 5/8", "Tues 5/9", "Weds 5/10", "Thurs 5/11", "Fri 5/12"]
     # df.style.applymap(color)
 
-    return render_template("schedule.html", name=showSchedule, data=df.style.applymap(color).render())
+    return render_template("index.html", data=df.style.applymap(color).render())
+    # return render_template("schedule.html", name=showSchedule, data=df.style.applymap(color).render())
 
     ############################################
     
