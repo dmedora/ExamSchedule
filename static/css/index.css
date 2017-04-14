@@ -3,13 +3,149 @@
     margin-bottom: 10px;
     margin-right: 5px;
     margin-left: 5px;
+    line-height: 24px;
+    padding-left: 19px;
+    font-weight: 300;
+    background-color: #f1f2f4;
+    box-sizing: border-box;
+	width: 258px;
+	height: 40px;
+	font-size: 14px;
+	border: none;
+	-webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    -webkit-font-smoothing: antialiased;
 }
 
 .addbox{
 	margin-left: 5px;
+	background-color: #00bce4;
+	color: white;
+	letter-spacing: 1px;
+	width: 130px;
+	height: 30px;
+	font-size: 12px;
+	border: none;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+}
+
+#submit {
+	margin-left: 5px;
+	margin-top: 15px;
+	background-color: #00bce4;
+	color: white;
+	letter-spacing: 1px;
+	width: 258px;
+	height: 45px;
+	font-size: 14px;
+	border: none;
+	text-transform: uppercase;
+	-webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    margin-bottom: -30px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+	width: 100%;
+	max-width: 100%;
 }
 
 #inputbox::before {
     content: "";
     display: block;
 }
+
+#myList {
+	list-style-type: none;
+	-webkit-padding-start: 0px;
+}
+
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+}
+ 
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.footer {
+	margin-top: 10px;
+	bottom: 0;
+    left: 0;
+    height: 70px;
+    position: fixed;
+    margin-bottom: 0;
+    width: 100%;
+    background-color: #00bce4;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    padding-left: 15px;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+table, th, td {
+  border: 1px solid #C8C8C8;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+}
+
+table {
+  table-layout: fixed;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+}
+
+td, th {
+  width: 1%;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*.submitbutton {
+  background-color: green;
+} */
