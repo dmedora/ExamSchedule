@@ -210,6 +210,16 @@
             SIS Exam Schedule List
         </a>
 
+        <br>
+        <br>
+
+        <div class="df">
+            {% block content %}
+            <h1>Final Exam Schedule</h1>
+            {{data | safe}}
+            {% endblock %}
+        </div>
+
 
         <div class="row marketing">
             <div class="col-lg-6">
