@@ -7,3 +7,8 @@
 # Caches #
 ##########
 __pycache__
+
+
+# Build stuff #
+###############
+venv
