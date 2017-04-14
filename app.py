@@ -150,7 +150,9 @@ def search(day, time, classname):
 #       return json.dumps({"html":"<span>Fields not completed.</span>"})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
+    # app.run(debug=True)
+
 
 
 
