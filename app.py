@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, json
 import schedule_table
 import pandas as pd
 import random
+import os
 
 ################# NOTES #################
 # add alerts for exam schedule conflicts
