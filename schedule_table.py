@@ -51,7 +51,7 @@ for i in range(0, len(row_data)):
     #     continue
     temp = row_data[i][4] # string
     # temp = row_data[i][4].split(",")
-    temp = temp.replace(",", " ").replace("&", " ").replace(";", " ").replace("pm", " ").replace("am", " ").split() # list
+    temp = temp.replace(",", " ").replace("&", " ").replace(";", " ").replace("pm", " ").replace("am", " ").replace("MTWTH", "MTWTF").split() # list
     row_data[i][4] = temp
 
 # print(row_data)
