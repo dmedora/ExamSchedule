@@ -127,9 +127,6 @@ def search(day, time, classname):
 
     if time == "--" and day == "--":
         return None
-
-    if time == "--" or day == "--":
-        raise Exception("OH SHIT YOU DONE FUCKED UP")
     
     for row in row_data:
         if day in row[4] and time in row[4]:
