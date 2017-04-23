@@ -6,10 +6,9 @@ import pandas as pd
 import random
 import os
 
-################# NOTES #################
-# add alerts for exam schedule conflicts
-# 
-#########################################
+################# NOTES ##################
+# add alerts for exam schedule conflicts #
+##########################################
 
 app = Flask(__name__)
 
