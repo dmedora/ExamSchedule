@@ -146,6 +146,11 @@ h1 {
   text-align: center;
 }
 
+#lk {
+  color: white;
+  float: right;
+}
+
 /*.submitbutton {
   background-color: green;
 } */
